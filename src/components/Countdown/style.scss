@@ -1,0 +1,46 @@
+.timer-item-view {
+  background: transparent;
+  display: flex;
+  font-family: "Abel";
+  font-size: 40px;
+  text-transform: uppercase;
+  position: relative;
+  color: white !important;
+  display: flex;
+  align-items: flex-end;
+  &:not(:last-child):before {
+    position: absolute;
+    right: -25px;
+    top: -2px;
+    content: ":";
+    color: rgba(255, 255, 255, 0.5);
+  }
+  span:first-child {
+    margin-bottom: -5px;
+  }
+  .label {
+    font-size: 25px;
+  }
+  .time-number {
+    font-weight: 800;
+  }
+}
+
+.countdown-timer {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.countdown-timer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 24px;
+  .timer-text {
+    color: white;
+    display: block;
+  }
+}
+

@@ -1,0 +1,68 @@
+.timer-item-view {
+  background: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Abel";
+  font-size: 40px;
+  text-transform: uppercase;
+  position: relative;
+  color: white !important;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.timer-item-view:not(:last-child):before {
+  position: absolute;
+  right: -25px;
+  top: -2px;
+  content: ":";
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.timer-item-view span:first-child {
+  margin-bottom: -5px;
+}
+
+.timer-item-view .label {
+  font-size: 25px;
+}
+
+.timer-item-view .time-number {
+  font-weight: 800;
+}
+
+.countdown-timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.countdown-timer-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 24px;
+}
+
+.countdown-timer-wrapper .timer-text {
+  color: white;
+  display: block;
+}
+/*# sourceMappingURL=style.css.map */

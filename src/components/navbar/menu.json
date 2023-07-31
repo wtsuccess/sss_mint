@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Home",
+        "link": "https://staging.aneroverse.com/anero/"
+    },
+    {
+        "title": "Downtown",
+        "link": "https://staging.aneroverse.com/downtown-anero/"
+    },
+    {
+        "title": "Blueprint",
+        "link": "https://staging.aneroverse.com/blueprint/"
+    },
+    {
+        "title": "Transitmap",
+        "link": "https://staging.aneroverse.com/transitmap/"
+    },
+    {
+        "title": "The Crew",
+        "link": "https://staging.aneroverse.com/the-crew/"
+    },
+    {
+        "title": "Fanero Wall",
+        "link": "https://staging.aneroverse.com/fanero-wall/"
+    }
+]

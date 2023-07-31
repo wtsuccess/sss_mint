@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Sequl;
+    src: url('./resources/Sequel_Demo.ttf');
+  }
+  .modal_btn {
+    background: transparent;
+  }
+  .modal_btn:hover {
+    
+  }
+}
+.bn-onboard-modal {
+  z-index: 10;
+}
+
+@keyframes blink{
+  0%{opacity: 0;}
+  50%{opacity: 1;}
+  100%{opacity: 0;}
+}
+
+.animate-blink {
+	animation: blink 1.5s linear infinite;
+}
+
+.click-button {
+  cursor: pointer;
+}
+
+img {
+  object-fit: cover;
+}

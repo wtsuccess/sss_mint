@@ -79,7 +79,7 @@ const ConnectButton = () => {
             connectWallet()
           }}
           type="button"
-          className="flex items-center transition ease-in-out duration-300 bg-[#5765F1] hover:bg-[#5065F1]
+          className="flex items-center transition ease-in-out duration-300 bg-orange-500 hover:bg-orange-400
           hover:opacity-90 px-3 md:px-4 h-[40px] md:h-[35px] text-sm md:translate-x-0 font-mono text-white leading-[31px] rounded-md justify-center cursor-pointer"
         >
           CONNECT WALLET
@@ -92,7 +92,7 @@ const ConnectButton = () => {
             e.stopPropagation();
             disconnect()
           }}
-          className="flex items-center transition ease-in-out duration-300 bg-[#6c6c6c44] hover:bg-[#5065F1]
+          className="flex items-center transition ease-in-out duration-300
           hover:opacity-90 px-3 md:px-4 h-[40px] md:h-[35px] text-sm md:translate-x-0 font-mono text-white leading-[31px] rounded-md justify-center cursor-pointer"
         >
           <img src={'/img/eth.png'} className="h-[28px] w-[28px]" alt="eth" />

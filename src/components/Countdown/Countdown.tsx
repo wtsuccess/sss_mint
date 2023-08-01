@@ -61,12 +61,6 @@ export const MintCountdown: React.FC<MintCountdownProps> = ({
                     </span>
                     <span className="label">m</span>
                 </div>
-                {/* <div className="timer-item-view">
-                    <span className="time-number">
-                    {seconds < 10 ? `0${seconds}` : seconds}
-                    </span>
-                    <span className="label">s</span>
-                </div> */}
             </div>
         </div>
       );
@@ -75,16 +69,8 @@ export const MintCountdown: React.FC<MintCountdownProps> = ({
 
   const getText = () => {
     switch(status) {
-        // case SalePhase.None:
-        //     return 'Sale has been ended!';
-        // case SalePhase.PreSale:
-        //     return 'PRESALE ENDS IN';
-        // case SalePhase.RaffleSale:
-        //     return 'Final Sale Coming Soon!';
-        // case SalePhase.ReservedSale:
-        //     return 'FINAL SALE IS LIVE!';
         default:
-            return 'Sale has been ended!';
+            return 'Sale is live!';
     }
   };
 

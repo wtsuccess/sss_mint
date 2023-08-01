@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import MintingModal from '../components/modal'
 
-import Bigimage from '../resources/background.jpg'
+import Bigimage from '../resources/background.png'
 import Smallimage from '../resources/background_small.jpg'
 import {
   SalePhase,

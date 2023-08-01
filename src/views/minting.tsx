@@ -6,6 +6,7 @@ import Smallimage from "../resources/background_small.jpg";
 import {
   SalePhase,
   useContract,
+  useMaxMintAmount,
   useMaxSupply,
   useMintEndTime,
   useMintPreSale,
@@ -32,8 +33,8 @@ export default function Minting() {
   const salePhase = useSalePhase();
 
   const mintEndTime = useMintEndTime();
-  const [maxNum, setMaxNum] = useState(2);
-
+  // const [maxNum, setMaxNum] = useState();
+  const maxNum = useMaxMintAmount();
   const { state: stateForMintRaffle, send: mintRaffle } = useMintRaffleSale();
   const { state: stateForMintPreSale, send: mintPreSale } = useMintPreSale();
   const { state: stateForMintReservedSale, send: mintReserved } =
@@ -73,14 +74,14 @@ export default function Minting() {
       } else if (salePhase === SalePhase.ReservedSale) {
         s = "RESERVEDSALE";
       }
-      getWhiteListInfo(account, s).then((data) => {
-        if (!data.success) {
-          setMaxNum(0);
-          // toast.warning("This wallet is not allowed to mint at this sale.");
-        } else {
-          setMaxNum(data.limit);
-        }
-      });
+      // getWhiteListInfo(account, s).then((data) => {
+      //   if (!data.success) {
+      //     setMaxNum(0);
+      //     // toast.warning("This wallet is not allowed to mint at this sale.");
+      //   } else {
+      //     setMaxNum(data.limit);
+      //   }
+      // });
     }
   }, [account, salePhase]);
 
@@ -94,38 +95,38 @@ export default function Minting() {
         return;
       }
 
-      let result;
-      if (salePhase === SalePhase.PreSale) {
-        const data = await getWhiteListInfo(account, "PRESALE");
-        if (!data.success) {
-          toast.warning("You are not eligible to mint.");
-          return;
-        }
-        result = await mintPreSale(count, data.signature, {
-          value: price.mul(count),
-        });
-      } else if (salePhase == SalePhase.RaffleSale) {
-        const data = await getWhiteListInfo(account, "RAFFLESALE");
-        if (!data.success) {
-          toast.warning("You are not eligible to mint.");
-          return;
-        }
-        result = await mintRaffle(count, data.signature, {
-          value: price.mul(count),
-        });
-      } else if (salePhase == SalePhase.ReservedSale) {
-        const data = await getWhiteListInfo(account, "RESERVEDSALE");
-        if (!data.success) {
-          toast.warning("You are not eligible to mint.");
-          return;
-        }
-        result = await mintReserved(count, data.signature, {
-          value: price.mul(count),
-        });
-      } else {
-        toast.warning("Sale has not started yet.");
-        return;
-      }
+      await mintPreSale(count);
+      // if (salePhase === SalePhase.PreSale) {
+      //   const data = await getWhiteListInfo(account, "PRESALE");
+      //   if (!data.success) {
+      //     toast.warning("You are not eligible to mint.");
+      //     return;
+      //   }
+      //   result = await mintPreSale(count, data.signature, {
+      //     value: price.mul(count),
+      //   });
+      // } else if (salePhase == SalePhase.RaffleSale) {
+      //   const data = await getWhiteListInfo(account, "RAFFLESALE");
+      //   if (!data.success) {
+      //     toast.warning("You are not eligible to mint.");
+      //     return;
+      //   }
+      //   result = await mintRaffle(count, data.signature, {
+      //     value: price.mul(count),
+      //   });
+      // } else if (salePhase == SalePhase.ReservedSale) {
+      //   const data = await getWhiteListInfo(account, "RESERVEDSALE");
+      //   if (!data.success) {
+      //     toast.warning("You are not eligible to mint.");
+      //     return;
+      //   }
+      //   result = await mintReserved(count, data.signature, {
+      //     value: price.mul(count),
+      //   });
+      // } else {
+      //   toast.warning("Sale has not started yet.");
+      //   return;
+      // }
     } catch (err: any) {
       const errStr = JSON.stringify(err);
       toast.warning(err);

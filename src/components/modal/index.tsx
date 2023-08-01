@@ -30,7 +30,7 @@ export default function MintingModal({
   const [amount, setAmount] = useState(1)
 
   const increaseAmount = () => {
-    if (amount < maxNum) {
+    if (amount < (maxNum - mintedCount.toNumber())) {
       setAmount(amount + 1)
     }
   }
@@ -119,10 +119,10 @@ export default function MintingModal({
                 {mintedCount.toNumber()}/{totalCount.toNumber()}
               </p>
               <p className="text-[28px] font-['Abel']">
-                RIDERS
+                SEALS
               </p>
               <p className="text-[28px] font-['Abel']">
-                1 Rider ={' '}
+                1 Seal ={' '}
                 {parseFloat(ethers.utils.formatEther(price)).toFixed(2)} ETH
               </p>
               <p className="mt-[37px] text-[32px] font-['Abel']">

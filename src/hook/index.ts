@@ -24,7 +24,7 @@ export const useMintRaffleSale = () => {
 
 export const useMintPreSale = () => {
     const contract = useContract(contractAddress, contractAbi.abi);
-    const { state, send } = useContractFunction(contract, 'preSaleMint');
+    const { state, send } = useContractFunction(contract, 'mint');
     return {state, send};
 }
 
@@ -56,24 +56,24 @@ export const useTotalSupply = () => {
 
 export const useNFTPrice = (): BigNumber => {
     const contract = useContract(contractAddress, contractAbi.abi);
-    const currentSalePhase = useSalePhase();
+    // const currentSalePhase = useSalePhase();
 
-    const getPriceMethod = (): string => {
-        switch(currentSalePhase) {
-            case SalePhase.PreSale:
-                return 'preSalePrice';
-            case SalePhase.RaffleSale:
-                return 'raffleSalePrice';
-            case SalePhase.ReservedSale:
-                return 'reservedSalePrice';
-            default:
-                return 'preSalePrice';
-        }
-    }
+    // const getPriceMethod = (): string => {
+    //     switch(currentSalePhase) {
+    //         case SalePhase.PreSale:
+    //             return 'preSalePrice';
+    //         case SalePhase.RaffleSale:
+    //             return 'raffleSalePrice';
+    //         case SalePhase.ReservedSale:
+    //             return 'reservedSalePrice';
+    //         default:
+    //             return 'preSalePrice';
+    //     }
+    // }
 
     const {value, error} = useCall({
         contract: contract,
-        method: getPriceMethod(),
+        method: "cost",
         args: []
     }) || {value: [BigNumber.from(0)]};
 
@@ -81,7 +81,13 @@ export const useNFTPrice = (): BigNumber => {
 }
 
 export const useMaxSupply = () => {
-    return BigNumber.from(7777 - 1858);
+    const contract = useContract(contractAddress, contractAbi.abi);
+    const {value, error} = useCall({
+        contract: contract,
+        method: "maxSupply",
+        args: []
+    }) || {value: [BigNumber.from(0)]};
+    return value ? value[0] : BigNumber.from(0);
 }
 
 export const useMintEndTime = (): number => {
@@ -109,4 +115,14 @@ export const useMintEndTime = (): number => {
 
     return value ? value[0].toNumber() * 1000 : 0
     
+}
+
+export const useMaxMintAmount = () => {
+    const contract = useContract(contractAddress, contractAbi.abi);
+    const {value, error} = useCall({
+        contract: contract,
+        method: "maxMintAmount",
+        args: []
+    }) || {value: [BigNumber.from(0)]};
+    return value ? value[0] : BigNumber.from(0);
 }
